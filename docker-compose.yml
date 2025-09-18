@@ -25,7 +25,7 @@ services:
   worker:
     build:
       context: .
-      dockerfile: Dockerfile.worker
+      dockerfile: Dockerfile
     container_name: dev_worker
     depends_on:
       - redis
