@@ -13,14 +13,14 @@ template:
     app: postgres
   spec:
     containers:
-      - name: postgres
+      -name: postgres
       image: postgres:15-alpine
       env:
-        - name: POSTGRES_USER
+        -name: POSTGRES_USER
         value: dev
-        - name: POSTGRES_PASSWORD
+        -name: POSTGRES_PASSWORD
         value: dev
-        - name: POSTGRES_DB
+        -name: POSTGRES_DB
         value: devdb
       ports:
         - containerPort: 5432

@@ -58,7 +58,6 @@ def worker_loop(poll_interval=2):
 
 
 if __name__ == '__main__':
-# background worker thread
     t = threading.Thread(target=worker_loop, daemon=True)
     t.start()
     app.run(host='0.0.0.0', port=8000)
