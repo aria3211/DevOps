@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: dev_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+
+
+  postgres: 
+    image: postgres:15-alpine
+    container_name: dev_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+      POSTGRES_DB: devdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    container_name: dev_worker
+    depends_on:
+      - redis
+      - postgres
+    environment:
+      REDIS_URL: "redis://redis:6379/0"
+      QUEUE_KEY: "urls"
+      DATABASE_URL: "postgresql://dev:dev@postgres:5432/devdb"
+    ports:
+      - "8000:8000" # برای دسترسی به /metrics و /healthz
+    restart: on-failure
+
+
+volumes:
+  pgdata:
