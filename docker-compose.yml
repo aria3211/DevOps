@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   redis:
     image: redis:7-alpine
@@ -35,7 +34,7 @@ services:
       QUEUE_KEY: "urls"
       DATABASE_URL: "postgresql://dev:dev@postgres:5432/devdb"
     ports:
-      - "8000:8000" # برای دسترسی به /metrics و /healthz
+      - "9000:8000" # برای دسترسی به /metrics و /healthz
     restart: on-failure
 
 
