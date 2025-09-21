@@ -106,4 +106,4 @@ curl http://localhost:8080/metrics
 
 Worker logs will show: ***CAPTCHA detected***, ***quarantining worker***
 
-[Check Runbook](./RUNBOOK.md)
+[Check Runbook](https://github.com/aria3211/DevOps/blob/main/RUNBOOK.md)
